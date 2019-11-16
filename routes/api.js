@@ -16,6 +16,7 @@ router.post("/profile/update", middleware.checkToken, AccountManager.update);
 router.post("/post/create", middleware.checkToken, PostManager.createPost);
 router.get("/post/all", PostManager.allPost);
 router.get("/post/:id", PostManager.singlePost);
+router.post("/post/rating",middleware.checkToken,PostManager.update);
 
 router.get("/post/:id/delete", middleware.checkToken, PostManager.deletePost);
 

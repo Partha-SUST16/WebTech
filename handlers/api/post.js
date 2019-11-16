@@ -43,6 +43,44 @@ class PostManager {
       res.send(result.ops[0]);
     });
   }
+  update(req,res){
+     try {
+       //let rating = req.body.rating;
+       const query = { "post._id": req.body.id };
+       
+       Post.findOne({_id:new getObjectId(req.body.id)}, (err, result) => {
+        if (err) {
+          res.status(400).send({ post: req.body, err: err });
+          return;
+        }
+        Post.updateOne(
+          {
+          _id:new getObjectId(req.body.id)
+        },
+        {$inc:{
+          "rating":parseFloat(req.body.rating),
+          "cnt":1
+        }}
+        );
+        res.send({
+          postSet: result
+        });
+      });
+      // db.collection("post").findOne(query, (err, result) => {
+      //     if (err) {
+      //       res.status(400).send({ post: req.body, err: err });
+      //       return;
+      //     }
+      //     res.send({
+      //       postSet: result
+      //     });
+      //   });
+          
+    } catch (error) {
+      res.status(400).send(error);
+    }
+    //res.status(200).send(rating);
+  }
 
 //   addCommentOnPost(req, res) {
 //     let data = req.body;

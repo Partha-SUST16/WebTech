@@ -18,6 +18,7 @@ class Login extends Component{
         localStorage.clear();
       }
       handleSubmit(event) {
+        localStorage.clear();
         event.preventDefault();
         let data = {
           email: this.state.inputEmail,

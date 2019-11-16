@@ -122,7 +122,8 @@ class Post extends Model{
               time: data.time,
               date: data.date,
               user: data.user,
-              likes: []
+              rating:1,
+              cnt:1
             },
             listener
           );
