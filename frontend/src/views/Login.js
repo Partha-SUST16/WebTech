@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import { MDBNav, MDBNavItem, MDBNavLink } from "mdbreact";
 import NavBar from './NavBar';
-import { Link } from 'react-router-dom';
+import { Link ,Redirect} from 'react-router-dom';
 
 class Login extends Component{
     constructor(props) {
         super(props);
         this.state = {
           inputEmail: null,
-          inputPassword: null
+          inputPassword: null,
+          isAuth:false
         };
     
         this.handleSubmit = this.handleSubmit.bind(this);
+      }
+      componentDidMount(){
+        localStorage.clear();
       }
       handleSubmit(event) {
         event.preventDefault();
@@ -35,7 +39,7 @@ class Login extends Component{
                 let token = `Bearer ${data.token}`;
                 localStorage.setItem("token", token);
                 localStorage.setItem("isLogged", true);
-                window.location.replace("/profile");
+                this.setState({isAuth:true});
               });
             }
           });
@@ -47,6 +51,7 @@ class Login extends Component{
           return(
               <div>
             <NavBar/>
+            {this.state.isAuth?<Redirect to="/profile"/>:null}
             <div className="container-fluid mt-5">
             <div className="row d-flex justify-content-center">
               <div className="col-md-5 list-group-item">

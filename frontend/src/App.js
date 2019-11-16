@@ -7,12 +7,21 @@ import { HashRouter, Route, Switch,BrowserRouter } from 'react-router-dom';
 import {MainRouter} from './routes';
 import Login from './views/Login';
 import Profile from './views/Profile';
+import BlogItem from './views/BlogItem';
+import CreatePost from './views/CreatePost';
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 function App() {
   return (
     <BrowserRouter>
-   <MainRouter/>
+      <Switch>
+      <Route exact path="/signin" name="Login Page" render={props => <Login {...props}/>} />
+      <Route exact path="/signup" name="Signup Page" render={props => <Signup {...props}/>} />
+      <Route exact path="/" name="Home Page" render={props => <Home {...props}/>} />
+      <Route exact path="/postcreate" name="Post Create" render={props => <CreatePost {...props}/>} />
+      <Route exact path="/profile" name="Profile Page" render={props => <Profile {...props}/>} />
+      <Route exact path="/post/:postID" name="Post Details Page" render={props => <BlogItem {...props}/>} />
+      </Switch>
    </BrowserRouter>
   );
 }

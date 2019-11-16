@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import NavBar from './NavBar';
 class CreatePost extends Component{
     constructor(props) {
         super(props);
@@ -84,6 +84,8 @@ class CreatePost extends Component{
     
       render() {
         return (
+            <div>
+            <NavBar/>
           <div className="container-fluid mt-5">
             <div className="row d-flex justify-content-center">
               <div className="col-md-6 list-group-item">
@@ -91,6 +93,7 @@ class CreatePost extends Component{
                 {this.formView()}
               </div>
             </div>
+          </div>
           </div>
         );
       }

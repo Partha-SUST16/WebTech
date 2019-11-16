@@ -47,7 +47,7 @@ class BlogItem extends Component{
     
         return (
           <div>
-            <NavBar/>
+           
             <h4>{this.state.post.title}</h4>
             <small>
               {` ${this.state.post.date} : ${this.state.post.time} - ${this.state.post.user.name}`}
@@ -61,8 +61,11 @@ class BlogItem extends Component{
     
       render() {
         return (
+            <div>
+            <NavBar/>
           <div className="d-flex justify-content-center mt-5">
             <div className="col-md-6 ">{this.getView()}</div>
+          </div>
           </div>
         );
       }

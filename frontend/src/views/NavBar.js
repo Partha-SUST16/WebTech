@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
     MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 import { BrowserRouter  } from 'react-router-dom';
+import { Link ,Redirect} from 'react-router-dom';
+import { Button, Navbar,Nav } from 'react-bootstrap'
 
 class NavbarPage extends Component {
     constructor(props) {
@@ -25,57 +27,55 @@ class NavbarPage extends Component {
       toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
       }
+      logout(event){
+        event.preventDefault();
+        localStorage.clear();
+        window.location.replace("/");
+      }
  getNavOptions(){
      if(this.state.isLogged){
          return (
-            <MDBNavbar color="default-color" dark expand="md">
-            <MDBNavbarBrand>
-          <strong className="white-text">Redit</strong>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav left>
-            <MDBNavItem active>
-              <MDBNavLink to="/">Home</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="/profile">Profile</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="/postcreate">Create Post</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="!#">Signout</MDBNavLink>
-            </MDBNavItem>
-            
-          </MDBNavbarNav>
-         
-        </MDBCollapse>
-      </MDBNavbar>
+            <Navbar bg="primary" variant="dark">
+            <Navbar.Brand href="/">Blog</Navbar.Brand>
+            <Nav className="mr-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/profile">Profile</Nav.Link>
+              <Nav.Link href="/postcreate">Create Post</Nav.Link>
+              <Nav.Link href="/signin">Signout</Nav.Link>
+            </Nav>
+          </Navbar>
          );
      } else{
          return (
-            <MDBNavbar color="default-color" dark expand="md">
-            <MDBNavbarBrand>
-          <strong className="white-text">Redit</strong>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav left>
-            <MDBNavItem active>
-              <MDBNavLink to="/">Home</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="/signin">Signin</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="/signup">Signup</MDBNavLink>
-            </MDBNavItem>
+    //         <MDBNavbar color="default-color" dark expand="md">
+    //         <MDBNavbarBrand>
+    //       <strong className="white-text">Redit</strong>
+    //     </MDBNavbarBrand>
+    //     <MDBNavbarToggler onClick={this.toggleCollapse} />
+    //     <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+    //       <MDBNavbarNav left>
+    //         <MDBNavItem active>
+    //           <MDBNavLink to="/">Home</MDBNavLink>
+    //         </MDBNavItem>
+    //         <MDBNavItem>
+    //           <MDBNavLink to="/signin">Signin</MDBNavLink>
+    //         </MDBNavItem>
+    //         <MDBNavItem>
+    //           <MDBNavLink to="/signup">Signup</MDBNavLink>
+    //         </MDBNavItem>
             
-          </MDBNavbarNav>
+    //       </MDBNavbarNav>
          
-        </MDBCollapse>
-      </MDBNavbar>
+    //     </MDBCollapse>
+    //   </MDBNavbar>
+    <Navbar bg="primary" variant="dark">
+    <Navbar.Brand href="/">Blog</Navbar.Brand>
+    <Nav className="mr-auto">
+      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/signin">Signin</Nav.Link>
+      <Nav.Link href="/signup">Signup</Nav.Link>
+    </Nav>
+  </Navbar>
          );
      }
  }
