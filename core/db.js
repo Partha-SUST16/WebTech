@@ -3,14 +3,14 @@ var ObjectId = require("mongodb").ObjectID;
 
 var DB = function(){
     const DB_URL = "mongodb://localhost:27017";
-    const DB_NAME = "abc";
+    const DB_NAME = "moc";
 
     var db = null;
 
     async function Connect(){
         try {
             let _connection = await MongoClient.connect(DB_URL);
-            return _connection.db("abc");
+            return _connection.db("moc");
         } catch (error) {
             return error;
         }
