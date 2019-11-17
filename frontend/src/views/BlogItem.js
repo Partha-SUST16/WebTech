@@ -19,8 +19,9 @@ class BlogItem extends Component{
         this.setState({rating: nextValue});
       }
     handleSubmit(){
-    if(!this.state.isLogged){
+    if(this.state.isLogged!==null){
       let token = localStorage.getItem("token");
+     // alert(token)
       let givenRating = this.state.rating;
       let previousRating = this.state.post.rating;
       let previousCnt = this.state.post.cnt;
@@ -48,7 +49,7 @@ class BlogItem extends Component{
                // res = res.json().then(data => {
                //   window.location.replace(`/post/${data._id}`);
                // });
-               alert("Success");
+               window.location.reload();
              }
            });
        } catch (error) {
@@ -125,8 +126,9 @@ class BlogItem extends Component{
           value={rating}
           onStarClick={this.onStarClick.bind(this)}
         />
-        
+        <div>
         <ReactBootstrap.Button variant="outline-success" onClick={this.handleSubmit}>Submit Rating</ReactBootstrap.Button>
+        </div>
           </div>
          
           </div>
