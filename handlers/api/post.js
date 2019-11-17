@@ -58,9 +58,12 @@ class PostManager {
           _id:new getObjectId(req.body.id)
         },
         {$inc:{
-          "rating":parseFloat(req.body.rating),
           "cnt":1
         }}
+        );
+        Post.updateOne(
+          {_id:new getObjectId(req.body.id)},
+          {$set:{"rating":parseFloat(req.body.rating).toFixed(2)}}
         );
         res.send({
           postSet: result
