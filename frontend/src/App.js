@@ -9,6 +9,7 @@ import Login from './views/Login';
 import Profile from './views/Profile';
 import BlogItem from './views/BlogItem';
 import CreatePost from './views/CreatePost';
+import BlogUpdate from './views/BlogUpdate';
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route exact path="/postcreate" name="Post Create" render={props => <CreatePost {...props}/>} />
       <Route exact path="/profile" name="Profile Page" render={props => <Profile {...props}/>} />
       <Route exact path="/post/:postID" name="Post Details Page" render={props => <BlogItem {...props}/>} />
+      <Route exact path="/postupdate/:postID" name="Post Update Page" render={props => <BlogUpdate {...props}/>} />
       </Switch>
    </BrowserRouter>
   );

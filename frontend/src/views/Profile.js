@@ -6,7 +6,9 @@ class PostItem extends Component{
         super(props);
         this.state = {};
         this.delete = this.delete.bind(this);
+        
       }
+      
       delete(event) {
         event.preventDefault();
         let token = localStorage.getItem("token");
@@ -49,6 +51,8 @@ class PostItem extends Component{
                   <button className="btn btn-sm btn-danger" onClick={this.delete}>
                     Delete
                   </button>
+                  <a href={`/postupdate/${this.props.post._id}`} className="btn btn-sm btn-default">Update</a>
+
                 </div>
               </div>
             </div>

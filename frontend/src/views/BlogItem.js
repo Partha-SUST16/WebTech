@@ -73,6 +73,7 @@ class BlogItem extends Component{
         this.setState({ id: id });
         this.setState({isLogged:localStorage.getItem("isLogged")})
         this.loadPost(id);
+        
       }
       loadPost(id) {
         try {
@@ -87,6 +88,7 @@ class BlogItem extends Component{
                 post: data
               });
             });
+            console.log(id);
         } catch (err) {
           console.log(err);
           alert("something went wrong");
