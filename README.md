@@ -16,4 +16,7 @@ To run this project
 * back to root folder and run `nodemon npm start`
 * another terminal start the react project in frontend via `npm start`
 
-This is based on *MongoDB* so user must have to run `mongod` server in his pc
+This is based on **MongoDB** so user must have to run `mongod` server in his pc.
+
+For installing *MongoDb* in windows follow the link:
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
