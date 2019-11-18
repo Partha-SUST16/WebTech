@@ -43,6 +43,27 @@ class PostManager {
       res.send(result.ops[0]);
     });
   }
+  updatePost(req,res){
+    try {
+      let id = req.body.id;
+      let upbody = req.body.description;
+      let uptitle = req.body.title;
+      Post.updateOne({_id:new getObjectId(id)},
+        {$set:{
+          title:uptitle,
+          body:upbody
+        }},
+        (err,result)=>{
+          if (err) {
+            res.status(400).send(err);
+            return;
+          }
+          res.send(result);
+      });
+    } catch (error) {
+      res.status(400).send(err);
+    }
+  }
   update(req,res){
      try {
        //let rating = req.body.rating;
