@@ -25,9 +25,14 @@ class BlogItem extends Component{
       let givenRating = this.state.rating;
       let previousRating = this.state.post.rating;
       let previousCnt = this.state.post.cnt;
+      // previousCnt = previousCnt+1;
+      // let avg = previousRating/previousCnt;
+      // avg = avg+(givenRating/previousCnt);
+      let mainRating = previousRating*previousCnt;
+      mainRating = mainRating+givenRating;
       previousCnt = previousCnt+1;
-      let avg = previousRating/previousCnt;
-      avg = avg+(givenRating/previousCnt);
+      let avg = (mainRating/previousCnt);
+      avg = (avg>5.0 ? 5.0:avg);
        let data = {
          id:this.state.id,
          rating:avg
@@ -123,7 +128,7 @@ class BlogItem extends Component{
             <div className="col-md-6 ">{this.getView()}</div>
             <StarRatingComponent 
           name="rate1" 
-          starCount={10}
+          starCount={5}
           value={rating}
           onStarClick={this.onStarClick.bind(this)}
         />

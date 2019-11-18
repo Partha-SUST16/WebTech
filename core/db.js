@@ -4,14 +4,14 @@ var md5 = require('md5');
 
 var DB = function(){
     const DB_URL = "mongodb://localhost:27017";
-    const DB_NAME = "moc";
+    const DB_NAME = "blog";
 
     var db = null;
 
     async function Connect(){
         try {
             let _connection = await MongoClient.connect(DB_URL);
-            return _connection.db("moc");
+            return _connection.db("blog");
         } catch (error) {
             return error;
         }
