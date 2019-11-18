@@ -58,6 +58,7 @@ class BlogItem extends Component{
       
      }else{
        alert("Login First");
+       window.location.replace("/signin");
      }
     
     }

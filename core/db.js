@@ -1,5 +1,6 @@
 const MongoClient = require("mongodb").MongoClient;
 var ObjectId = require("mongodb").ObjectID;
+var md5 = require('md5');
 
 var DB = function(){
     const DB_URL = "mongodb://localhost:27017";
@@ -79,8 +80,12 @@ class User extends Model {
     constructor(){
         super("user");
     }
+    Hash(pass){
+        return md5(pass);
+    }
     create(data,listener){
         try {
+            var hp = this.Hash(data.password);
             this.findOne({email:data.email},(err,result)=>{
                 if(result!=null){
                     listener({message:"email already registerd"});
@@ -89,7 +94,7 @@ class User extends Model {
                 this.insertOne({
                     name: data.name,
                     email: data.email,
-                    password: data.password
+                    password: hp
                 },listener);
             });
         } catch (err) {
@@ -98,7 +103,8 @@ class User extends Model {
     }
     authenticate(data, listener) {
         try {
-          this.findOne({ email: data.email, password: data.password }, listener);
+            var hp = this.Hash(data.password);
+          this.findOne({ email: data.email, password: hp }, listener);
         } catch (err) {
           listener(err, null);
         }
