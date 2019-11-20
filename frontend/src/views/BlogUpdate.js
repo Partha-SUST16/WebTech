@@ -55,8 +55,8 @@ class BlogUpdate extends Component{
       handleSubmit(event) {
         event.preventDefault();
         let data = {
-          title: this.state.inputTitle,
-          description: this.state.inputBody,
+          title: (this.state.inputTitle!=null?this.state.inputTitle:this.state.title),
+          description: (this.state.inputBody!=null?this.state.inputBody:this.state.body),
           id: this.state.id
         };
     
@@ -110,7 +110,7 @@ class BlogUpdate extends Component{
               className="btn bg-light-gray btn-block mt-4"
               onSubmit={this.handleSubmit}
             >
-              Post
+              Update
             </button>
           </form>
         );
